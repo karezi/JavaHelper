@@ -6,7 +6,7 @@
 
 ### JVM内存结构/区域/运行时数据区
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-3/JVM%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F.png" width="50%" />
+<img src="https://i.loli.net/2021/01/28/lyn57tPkbXV19IU.png" width="50%" />
 
 - 线程共享（堆、非堆（方法区（运行时常量池））=>元空间【1.8】）
 
@@ -16,7 +16,10 @@
 
 ### GC算法
 
-- 分代：新生代（Eden、From/S0、To/S1）Minor GC、老年代 Major GC=Full GC、永久代/元空间<img src="https://pic4.zhimg.com/80/v2-8845236d1ab9f22fcc658375967d53fb_1440w.jpg" alt="img" style="zoom:80%;" />
+- 分代：新生代（Eden、From/S0、To/S1）Minor GC、老年代 Major GC=Full GC、永久代/元空间
+
+	<img src="https://i.loli.net/2021/01/28/WJQC2wNIrFkovxT.jpg" alt="img" style="zoom:80%;" />
+
 - 存活性判断：
   - 引用计数法（循环引用）
   - 可达性分析（GCRoots：寄存器/活跃线程、虚拟机栈[栈帧的本地变量表]、全局变量空间[方法区类静态属性、方法区常量变量]、本地方法栈中JNI[Native方法]）
@@ -25,8 +28,11 @@
   - 标记清除（效率、空间）：对象存活多、老年代；提前GC、碎片空间、扫描两次
   - 标记复制：对象存活少、扫描整个空间、年轻代；需要空闲空间、需要复制移动对象
   - 标记整理
+  
 - 强软弱虚
+
 - Full GC发生的时机：老年代写满、system.gc()、持久代空间不够
+
 - Hotspot垃圾回收器
   - 新生代：Serial、ParNew、Parallel Scaveage
   - 老年代：CMS（CPU敏感、浮动垃圾、空间碎片）、Serial Old(MSC)、Parallel Old
@@ -44,7 +50,7 @@
 
 - Mark Word
 
-  ![img](https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2471399057,1363437917&fm=26&gp=0.jpg)
+  ![img](https://i.loli.net/2021/01/28/O3VpdHgJriuvMIn.jpg)
 
 ### Java类文件结构
 
@@ -52,8 +58,9 @@
 
 ### Java类加载机制
 
-- 1. 加载：生成一个class对象
+- 生命周期
 
+  1. 加载：生成一个class对象
   2. 连接
 
   ​	2.1. 验证：文件格式、元数据、字节码、符号引用
@@ -133,7 +140,7 @@
 
 ### 线程生命周期
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/19-1-29/Java+%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%8F%98%E8%BF%81.png" alt="Java 线程状态变迁 " style="zoom:67%;" />
+<img src="https://i.loli.net/2021/01/28/HmOVA3taTQM4cFB.png" alt="Java 线程状态变迁 " style="zoom:67%;" />
 
 ### 死锁条件和破除
 
@@ -171,7 +178,7 @@
 
 - JMM内存模型
 
-![数据不一致](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%80%E8%87%B4.png)
+![数据不一致](https://i.loli.net/2021/01/28/nBvHeA6LqjOkhPI.jpg)
 
 - 可见性：嗅探机制（处理器嗅探总线），强制失效
 
@@ -242,7 +249,7 @@
 
 - 工作流程
 
-  ![图解线程池实现原理](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/%E5%9B%BE%E8%A7%A3%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.png)
+  ![图解线程池实现原理](https://i.loli.net/2021/01/28/mHx7NJupZUXYWge.png)
   
 - 运行状态：Volatile的状态码running/shutdown/stop/terminated
 
@@ -335,17 +342,17 @@
 
 - 系统架构图
 
-![img](https://img2018.cnblogs.com/blog/1077085/201911/1077085-20191104162030494-1807669278.png)
+![img](https://i.loli.net/2021/01/28/rXT9njypogDlbWi.png)
 
 - 查询过程
 
-  <img src="https://images2018.cnblogs.com/blog/1253350/201804/1253350-20180420172642192-41106054.jpg" alt="img" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/dpcifT79y1xvRFO.jpg" alt="img" style="zoom:50%;" />
 
 - 逻辑存储结构
 
   段(segment)、区(extent)、页(page)、行(row)
 
-  <img src="https://images2018.cnblogs.com/blog/1253350/201804/1253350-20180420172348615-1589272214.jpg" alt="img" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/VXNFxGcT98zlyhW.jpg" alt="img" style="zoom:50%;" />
 
 - 驱动表：JOIN
 
@@ -460,7 +467,7 @@
 
 - Explain**必要时可以使用force index来强制查询走某个索引**
 
-  ![img](https://images.changchenghao.cn/2020/05/c3566002026a408e84c274e32591350c.jpg)
+  ![img](https://i.loli.net/2021/01/28/xymiMFwKjuZgQ2h.jpg)
 
   - **type列，**连接类型。一个好的SQL语句至少要达到range级别。杜绝出现all级别。
   - **key列，**使用到的索引名。如果没有选择索引，值是NULL。可以采取强制索引方式。
@@ -508,7 +515,7 @@
 - 非阻塞IO也有问题，线程要读数据，读了一点就返回，线程什么时候知道继续读？写一样
 - 一般都是select解决，但是性能低，现在都用epoll
 
-<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9PcVRBbDNXVEM3RmsyQmxOc3MzcmliRlA4NklWak5yTmc3VkVOODZWNVpsRHppYjlOODlib1BQQTZPSjd4NzFPcGljU1hlTXZPbHEyMGFzUXZWaWFOQTU1UHcvNjQwP3d4X2ZtdD1wbmc" alt="img" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/01/28/iH9XVwlWj526Ups.jpg" alt="img" style="zoom:50%;" />
 
 ### 内存模型
 
@@ -521,7 +528,7 @@
 - 令牌
 - 漏桶
 
-![ redis 内部的存储结构如图示](https://img-blog.csdn.net/20170511145004869?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2Fub3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![ redis 内部的存储结构如图示](https://i.loli.net/2021/01/28/scWbi643C5AJpda.jpg)
 
 ### 数据结构
 
@@ -576,7 +583,7 @@
 
 - 数据初始化：从节点发送命令，主节点做bgsave，同时开启buffer
 
-  <img src="https://pic3.zhimg.com/80/v2-2fec2f1675ac45234f63d94bdab2bfd6_1440w.jpg" alt="img" style="zoom:67%;" />
+  <img src="https://i.loli.net/2021/01/28/IY6UokTF7hmBGZA.jpg" alt="img" style="zoom:67%;" />
 
 #### 数据同步机制
 
@@ -659,7 +666,7 @@
 
 ### 模块
 
-![img](https://img2018.cnblogs.com/blog/842514/201906/842514-20190611212352385-156216982.png)
+![img](https://i.loli.net/2021/01/28/x1V59OP2ksQfDqR.png)
 
 ### IoC
 
@@ -672,7 +679,7 @@
   - JDK：实现接口，java反射机制生成一个代理接口的匿名类，调用具体方法的时候调用invokeHandler
   - CGLib：ASM字节码编辑技术动态创建类，基于ClassLoad装载，修改字节码生成子类去处理
   
-  ![img](https://img2018.cnblogs.com/blog/842514/201906/842514-20190611212955176-1474324049.png)
+  ![img](https://i.loli.net/2021/01/28/dLh9vZ3wMkJR2fe.png)
 
 ### Bean
 
@@ -712,7 +719,7 @@
 
 ### 时序图
 
-<img src="https://i.loli.net/2020/12/15/SD4XtFrRz7CTnLp.png" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/01/28/r7RG2MhQ9DcWtwk.png" style="zoom:50%;" />
 
 ### XML中标签
 
@@ -738,7 +745,7 @@
   - 继承LifeCycle生命周期（一键式启停）：init、start、stop、destroy
   - Mapper组件负责路由
 
-<img src="https://mmbiz.qpic.cn/mmbiz_png/FbXJ7UCc6O0P5P1e0z3Jl9fYBQY6cw5icyQ5II8jNH4tY3X3sN67bGGFxLllKicIciciaX7LWUqVicOEpicSnjqTgBfw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/01/28/ad9xDJRfMjEZ6AN.png" alt="图片" style="zoom:50%;" />
 
 ### 设计模式
 
@@ -752,7 +759,7 @@
 
 - 目的：隔离Web应用
 
-<img src="https://mmbiz.qpic.cn/mmbiz_png/FbXJ7UCc6O0P5P1e0z3Jl9fYBQY6cw5icp5rXbURaRicF5LGUsoet2hAoU6D3e1VVUzFytPFiakYJ0PElGjjsicVmw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片" style="zoom:40%;" />
+<img src="https://i.loli.net/2021/01/28/ZeIroAQaEz68WBd.png" alt="图片" style="zoom:40%;" />
 
 ## NginX
 
@@ -786,7 +793,7 @@
 - 注册Channel到Selector接收方
 - 轮询写事件，开线程去处理，任务队列
 
-![img](https://upload-images.jianshu.io/upload_images/1089449-afd9e14197e1ef11.png?imageMogr2/auto-orient/strip|imageView2/2/w/751/format/webp)
+![Figure%206](https://i.loli.net/2021/01/28/lYcZi76W8nfS5zj.jpg)
 
 ### 线程模型
 
@@ -799,7 +806,7 @@
 
 ### 零拷贝
 
-![img](https://images.cnblogs.com/cnblogs_com/xing901022/1187174/o_Jietu20180330-153650.jpg)
+![img](https://i.loli.net/2021/01/28/uSJBMYbNHvwrFCD.jpg)
 
 ## ZooKeeper
 
@@ -901,6 +908,8 @@
 
 ### 调用链路
 
+<img src="https://i.loli.net/2021/02/27/18IOYmJ3b6vhaP2.png" alt="Architecture" style="zoom:50%;" />
+
 ### 服务暴露过程
 
 - IoC启动加载Dubbo配置的标签
@@ -966,11 +975,11 @@
 
 - 三次握手：为了防止已失效的连接请求报文段突然又传送到了服务端，产生错误。
 
-![img](https://pics1.baidu.com/feed/d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg?token=c86d4509157378798ebbccbe843486d1&s=9746F8123F5754CA48D574DA0300D0B2)
+![img](https://i.loli.net/2021/01/28/wegiNIWlzQaVTxU.jpg)
 
 - 四次挥手
 
-![img](https://pics5.baidu.com/feed/48540923dd54564e5260495ce0006487d0584fb6.jpeg?token=c3a743af38e25ff66deb6a07891be58e&s=C584FC1A71CFF4EE1A75A45203007073)
+![img](https://i.loli.net/2021/01/28/4qFtWe1boLVhmcD.jpg)
 
 ### 安全
 
@@ -1007,7 +1016,7 @@
 
 - SSO
 
-  <img src="https://img2018.cnblogs.com/i-beta/1195936/201912/1195936-20191230150756542-349806624.png" alt="img" style="zoom:33%;" />
+  <img src="https://i.loli.net/2021/01/28/rx63qXES48e2aCb.png" alt="img" style="zoom:33%;" />
 
 ## 分布式
 
@@ -1031,11 +1040,11 @@
 
 ### 分布式ID
 
-<img src="https://img2018.cnblogs.com/blog/1783295/201909/1783295-20190906204548381-1111976424.png" alt="img" style="zoom: 50%;" />
+<img src="https://i.loli.net/2021/01/28/M3btw9XZ4rzEnsO.png" alt="img" style="zoom: 50%;" />
 
 - 雪花算法
 
-  <img src="https://upload-images.jianshu.io/upload_images/13382703-b64e38457ddd13e2.jpg" alt="img" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/z8AfHkKX6CYUnyg.jpg" alt="img" style="zoom:50%;" />
 
 
 
@@ -1047,11 +1056,11 @@
 
 - 本地消息表（异步确保）
 
-  <img src="https://oscimg.oschina.net/oscnet/915a02484990dda820410c8cad2389c5386.jpg" alt="img" style="zoom:67%;" />
+  <img src="https://i.loli.net/2021/01/28/cmFKtIWp8GDE6Lh.png" alt="img" style="zoom:67%;" />
 
 - MQ
 
-  <img src="https://oscimg.oschina.net/oscnet/a411ccaf753bdd3c91ab94fe224109044f3.jpg" alt="img" style="zoom:67%;" />
+  <img src="https://i.loli.net/2021/01/28/ksmt7CQabNhnpzU.png" alt="img" style="zoom:67%;" />
 
 - 最大努力通知
 
@@ -1064,7 +1073,7 @@
 
 ## 微服务
 
-<img src="./Java高频面试题.assets/微服务.png" alt="微服务" style="zoom:80%;" />
+<img src="https://i.loli.net/2021/01/28/AGVYQMDLk9K6oie.png" alt="微服务" style="zoom:80%;" />
 
 - Feign
 - Skywalking
@@ -1083,7 +1092,7 @@
 
   - rabbitmq
 
-    ![img](https://pic3.zhimg.com/80/v2-cf2ff62088efcca10d15162142015e82_720w.jpg)
+    ![img](https://i.loli.net/2021/01/28/QdLmqo2bW8kxV4A.jpg)
 
 - 读写分离
 
@@ -1123,7 +1132,7 @@
 - 谷歌三驾马车（分布式处理技术MapReduce、列式存储BigTable、分布式文件系统GFS）
 - 数据采集与预处理A、数据存储B、数据清洗C、数据查询分析D、数据可视化E
 
-<img src="https://mmbiz.qpic.cn/mmbiz_png/7k5p7ia28JQ2lrbzWWXWOckzWicknN94SL6mDibtO6PNCOoCViapDq8zI8sg7JECAbo07n9uHubdTsWVTfzJnlglzQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="å¾ç" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/01/28/fbhjaYtr72QlVDZ.png" alt="å¾ç" style="zoom:50%;" />
 
 A: Sqoop、Cannel、Flume
 
@@ -1131,7 +1140,7 @@ B: HDFS、Kafka
 
 CD: MapReduce、Flink、Spark、Hadoop ---> HBase、Redis、RDBMS
 
-<img src="https://mmbiz.qpic.cn/mmbiz_png/7k5p7ia28JQ2lrbzWWXWOckzWicknN94SLHJguI7xDpdueGXpnEGy6vxnPb6lBicZssLX5popl7DXcl1s14VL71OQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="å¾ç" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/01/28/WtvT5BDeaJRVLZ3.png" alt="å¾ç" style="zoom:50%;" />
 
 ### ODPS离线分析
 
@@ -1157,9 +1166,9 @@ CD: MapReduce、Flink、Spark、Hadoop ---> HBase、Redis、RDBMS
 
   https://bbs.huaweicloud.com/blogs/221143
 
-  <img src="https://pic1.zhimg.com/v2-e65ec92a4e1c66419b1284984618f4a0_r.jpg" alt="preview" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/mCHfDOLzq8N3lTA.jpg" alt="preview" style="zoom:50%;" />
 
-  <img src="https://mmbiz.qpic.cn/mmbiz_png/uChmeeX1FpwWonxxyNO4ibGpUZTVdpQXcAm1xLfv38BKET1ic2SgIhWPUtRXEnuztzoPIRn1KRGIicaY9gicHP0m2g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/OogLRBG5nlthPTN.png" alt="img" style="zoom:50%;" />
 
 - 设计一个数据库系统
 
@@ -1174,15 +1183,15 @@ CD: MapReduce、Flink、Spark、Hadoop ---> HBase、Redis、RDBMS
 
 - 设计一个im系统包括群聊和单聊
 
-  <img src="https://pic2.zhimg.com/v2-4255de34ec75a3e0d4dbee884eb62725_r.jpg" alt="preview" style="zoom:67%;" />
+  <img src="https://i.loli.net/2021/01/28/ipyGCBbsZWMLUJA.jpg" alt="preview" style="zoom:67%;" />
 
 - 设计一个三高电商系统
 
-  <img src="https://resource.lilyssh.cn/pic/technical_architecture_1.png" alt="img" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/uThotDO4SLcGIgq.png" alt="img" style="zoom:50%;" />
 
 - 设计一个抢红包系统
 
-  <img src="http://img.mp.itc.cn/upload/20170227/59736c30fbb24d3991e75c7507bf7315_th.jpeg" alt="img" style="zoom:50%;" />
+  <img src="https://i.loli.net/2021/01/28/GLYTyeM36K8iwAg.jpg" alt="img" style="zoom:50%;" />
 
 ## 自己项目介绍
 
